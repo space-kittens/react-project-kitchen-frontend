@@ -1,0 +1,21 @@
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  font-family: "Exo 2";
+
+  font-display: swap;
+  src:
+    url("../../fonts/exo2-700.woff2") format("woff2"),
+    url("../../fonts/exo2-700.woff") format("woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  font-family: "JetBrains Mono";
+
+  font-display: swap;
+  src:
+    url("../../fonts/jet-brains-mono.woff2") format("woff2"),
+    url("../../fonts/jet-brains-mono.woff") format("woff");
+}
