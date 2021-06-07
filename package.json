@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "cross-env": "^5.1.4",
+    "prettier": "^2.3.1",
     "react-scripts": "1.1.1"
   },
   "dependencies": {
@@ -27,5 +28,13 @@
     "build": "react-scripts build",
     "test": "cross-env PORT=4100 react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "prettier": {
+    "printWidth": 110,
+    "useTabs": true,
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "trailingComma": "es5",
+    "singleQuote": true
   }
 }
