@@ -1,0 +1,115 @@
+@mixin h1 {
+  @include titles;
+
+  font-size: 64px;
+  line-height: 1;
+}
+
+@mixin h2 {
+  @include titles;
+
+  font-size: 36px;
+  line-height: 1.11;
+}
+
+@mixin headline {
+  @include titles;
+
+  font-size: 24px;
+  line-height: 1.17;
+}
+
+@mixin text {
+  @include default-text;
+
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@mixin caption {
+  @include default-text;
+
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+@mixin titles {
+  font-family: "Exo 2";
+  font-weight: bold;
+  font-style: normal;
+}
+
+@mixin default-text {
+  font-family: "JetBrains Mono";
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin indents-reset {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin retina {
+  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    @content;
+  }
+}
+
+// Desktop first
+
+@mixin viewport--xl {
+  @media (max-width: $viewport--xxl - 1) {
+    @content;
+  }
+}
+
+@mixin viewport--lg {
+  @media (max-width: $viewport--xl - 1) {
+    @content;
+  }
+}
+
+@mixin viewport--md {
+  @media (max-width: $viewport--lg - 1) {
+    @content;
+  }
+}
+
+@mixin viewport--sm {
+  @media (max-width: $viewport--md - 1) {
+    @content;
+  }
+}
+
+// Mobile first
+
+/* @mixin viewport--md {
+  @media (min-width: $viewport--md) {
+    @content;
+  }
+}
+
+@mixin viewport--lg {
+  @media (min-width: $viewport--lg) {
+    @content;
+  }
+}
+
+@mixin viewport--xl {
+  @media (min-width: $viewport--xl) {
+    @content;
+  }
+}
+
+@mixin viewport--xxl {
+  @media (min-width: $viewport--xxl) {
+    @content;
+  }
+} */
