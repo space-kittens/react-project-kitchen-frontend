@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "cross-env": "^5.1.4",
+    "prettier": "^2.3.1",
     "node-sass": "^6.0.0",
     "react-scripts": "^4.0.3"
   },
@@ -40,5 +41,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "prettier": {
+    "printWidth": 110,
+    "useTabs": true,
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "trailingComma": "es5",
+    "singleQuote": true
   }
 }
