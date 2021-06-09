@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-rational-order",
+    "stylelint-prettier/recommended"
+  ],
+  "plugins": ["stylelint-order", "stylelint-scss"],
+  "rules": {
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"]
+      }
+    ],
+    "rule-empty-line-before": ["always-multi-line"],
+    "block-opening-brace-newline-after": "always",
+    "block-closing-brace-newline-before": "always",
+    "color-named": "never"
+  }
+}
