@@ -3,10 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "cross-env": "^5.1.4",
-    "prettier": "^2.3.1",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
     "node-sass": "^6.0.0",
-    "react-scripts": "^4.0.3"
+    "prettier": "^2.3.1",
+    "react-scripts": "^4.0.3",
+    "stylelint": "^13.13.1",
+    "stylelint-config-htmlacademy": "^0.1.7",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-prettier": "^1.2.0",
+    "stylelint-scss": "^3.19.0"
   },
   "dependencies": {
     "history": "^4.6.3",
@@ -29,7 +45,11 @@
     "build": "react-scripts build",
     "test": "cross-env PORT=4100 react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prettier": "prettier  —write src/**/*.js"
+    "prettier": "prettier  —write src/**/*.js",
+    "eslint": "eslint --debug src/",
+    "eslint:write": "eslint --debug src/ --fix",
+    "stylelint": "stylelint '**/*{.css,.scss}'",
+    "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix"
   },
   "browserslist": {
     "production": [
@@ -45,10 +65,13 @@
   },
   "prettier": {
     "printWidth": 110,
-    "useTabs": true,
+    "useTabs": false,
     "tabWidth": 2,
     "bracketSpacing": true,
     "trailingComma": "es5",
-    "singleQuote": true
+    "singleQuote": true,
+    "semi": true,
+    "jsxSingleQuote": true,
+    "jsxBracketSameLine": false
   }
 }
