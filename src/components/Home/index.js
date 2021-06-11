@@ -10,8 +10,6 @@ import {
   APPLY_TAG_FILTER
 } from '../../constants/actionTypes';
 
-// YOU WILL DELETE NEXT LINE SOON
-import ToDelete from './ToDelete';
 
 const Promise = global.Promise;
 
@@ -27,7 +25,7 @@ const mapDispatchToProps = dispatch => ({
   onLoad: (tab, pager, payload) =>
     dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload }),
   onUnload: () =>
-    dispatch({  type: HOME_PAGE_UNLOADED })
+    dispatch({ type: HOME_PAGE_UNLOADED })
 });
 
 class Home extends React.Component {
@@ -47,30 +45,21 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home-page">
-
         <Banner token={this.props.token} appName={this.props.appName} />
         <div className="container page">
-          
-          {/* THIS COMPONENT WILL BE DELETED THIS IS WELCOME */}
-          <ToDelete />
-
-          {/* <div className="row">
+          <div className="row">
             <MainView />
-
             <div className="col-md-3">
               <div className="sidebar">
-
                 <p>Popular Tags</p>
-
                 <Tags
                   tags={this.props.tags}
-                  onClickTag={this.props.onClickTag} />
-
+                  onClickTag={this.props.onClickTag}
+                />
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
-
       </div>
     );
   }
