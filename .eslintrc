@@ -4,7 +4,10 @@
     "browser": true,
     "node": true
   },
-  "extends": "standard",
+  "extends": [
+    "standard",
+    "prettier"
+  ],
   "plugins": ["babel", "import", "jsx-a11y", "react", "prettier"],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -13,6 +16,5 @@
     "ecmaFeatures": {
       "jsx": true
     }
-  },
-  "prettier/prettier": ["error"]
+  }
 }
