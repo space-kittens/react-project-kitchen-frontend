@@ -18,5 +18,5 @@ export default combineReducers({
   home,
   profile,
   settings,
-  router: routerReducer
+  router: routerReducer,
 });
