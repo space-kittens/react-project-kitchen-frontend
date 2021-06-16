@@ -8,15 +8,16 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import './scss/styles.scss';
 
-import App from './components/App';
+import App from './components/App/App';
 
-ReactDOM.render((
+ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route path="/" component={App} />
+        <Route path='/' component={App} />
       </Switch>
     </ConnectedRouter>
-  </Provider>
+  </Provider>,
 
-), document.getElementById('root'));
+  document.getElementById('root')
+);
