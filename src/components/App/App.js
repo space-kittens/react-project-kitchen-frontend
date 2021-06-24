@@ -50,8 +50,8 @@ class App extends React.Component {
   render() {
     if (this.props.appLoaded) {
       return (
-        <div>
-          <Header appName={this.props.appName} currentUser={this.props.currentUser} />
+        <>
+          <Header currentUser={this.props.currentUser} />
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/login' component={Login} />
@@ -63,13 +63,13 @@ class App extends React.Component {
             <Route path='/@:username/favorites' component={ProfileFavorites} />
             <Route path='/@:username' component={Profile} />
           </Switch>
-        </div>
+        </>
       );
     }
     return (
-      <div>
-        <Header appName={this.props.appName} currentUser={this.props.currentUser} />
-      </div>
+      <>
+        <Header currentUser={this.props.currentUser} />
+      </>
     );
   }
 }
