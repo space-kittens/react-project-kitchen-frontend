@@ -24,6 +24,7 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled(NavLink)`
+  padding: 8px 0;
   font-family: ${fontFamily.exo2};
   font-size: 24px;
   line-height: 1.17;
