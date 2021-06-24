@@ -18,7 +18,6 @@ import { push } from 'react-router-redux';
 const mapStateToProps = (state) => {
   return {
     appLoaded: state.common.appLoaded,
-    appName: state.common.appName,
     currentUser: state.common.currentUser,
     redirectTo: state.common.redirectTo,
   };
@@ -51,7 +50,7 @@ class App extends React.Component {
     if (this.props.appLoaded) {
       return (
         <div>
-          <Header appName={this.props.appName} currentUser={this.props.currentUser} />
+          <Header currentUser={this.props.currentUser} />
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/login' component={Login} />
@@ -68,7 +67,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <Header appName={this.props.appName} currentUser={this.props.currentUser} />
+        <Header currentUser={this.props.currentUser} />
       </div>
     );
   }
