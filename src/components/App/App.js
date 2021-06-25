@@ -18,7 +18,6 @@ import { push } from 'react-router-redux';
 const mapStateToProps = (state) => {
   return {
     appLoaded: state.common.appLoaded,
-    appName: state.common.appName,
     currentUser: state.common.currentUser,
     redirectTo: state.common.redirectTo,
   };

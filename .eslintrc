@@ -5,10 +5,11 @@
     "node": true
   },
   "extends": [
+    "plugin:react/recommended",
     "standard",
     "prettier"
   ],
-  "plugins": ["babel", "import", "jsx-a11y", "react", "prettier"],
+  "plugins": ["babel" ,"import", "jsx-a11y", "react", "prettier"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
@@ -16,5 +17,10 @@
     "ecmaFeatures": {
       "jsx": true
     }
+  },
+  "rules": {
+    // добавленно временно
+    "react/prop-types": "off",
+    "react/no-deprecated": "off"
   }
 }
