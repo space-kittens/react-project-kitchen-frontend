@@ -4,9 +4,8 @@ import { CHANGE_TAB } from '../../../../constants/actionTypes';
 
 import agent from '../../../../agent';
 
-import styled from 'styled-components';
-import { listReset, btnReset } from '../../../../scss/mixins';
-import { colorText, colorBase } from '../../../../scss/styles';
+import TabList from '../../../../ui/Tablist/Tablist';
+import Tab from '../../../../ui/Tab/Tab';
 
 const YourFeedTab = ({token, tab, onTabClick}) => {
   if (token) {
@@ -64,34 +63,14 @@ const mapStateToProps = (state) => ({
   token: state.common.token,
 });
 
-const TabList = ({ token, tab, tag, onTabClick }) => (
-  <List>
+const HomePageTabList = ({ token, tab, tag, onTabClick }) => (
+  <TabList>
     <YourFeedTab token={token} tab={tab} onTabClick={onTabClick} />
 
     <GlobalFeedTab tab={tab} onTabClick={onTabClick} />
 
     <TagFilterTab tag={tag} />
-  </List>
+  </TabList>
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(TabList);
-
-const List = styled.ul`
-  ${listReset}
-
-  display: flex;
-  box-shadow: inset 0 -1px 0 #2F2F37;
-`;
-
-const Tab = styled.button`
-  ${btnReset}
-
-  padding: 16px 24px;
-  color: ${({isActive}) => isActive ? colorText.primary : colorText.secondary};
-  box-shadow: inset 0 -2px 0 ${( { isActive } ) => isActive ? colorBase.accent : 'transparent'};
-
-  &:hover,
-  &:focus {
-    outline: 1px solid ${colorBase.accent};
-  }
-`;
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageTabList);

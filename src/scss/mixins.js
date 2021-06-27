@@ -9,6 +9,7 @@ export const listReset = css`
 
 export const btnReset = css`
   padding: 0;
+  color: inherit;
   background-color: transparent;
   border: 0;
 `;

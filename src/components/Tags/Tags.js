@@ -9,7 +9,7 @@ import { listReset, textStyles } from '../../scss/mixins';
 import { colorBase } from '../../scss/styles';
 
 const mapStateToProps = (state) => ({
-  appTags: state.home.tags,
+  appTags: state.home.tags || state.profile.tags,
   activeTag: state.articleList.tag
 } );
 

@@ -12,7 +12,7 @@ import {
   PROFILE_FAVORITES_PAGE_UNLOADED,
 } from '../constants/actionTypes';
 
-export default (state = {}, action) => {
+export default ( state = {}, action ) => {
   switch (action.type) {
     case ARTICLE_FAVORITED:
     case ARTICLE_UNFAVORITED:
@@ -73,6 +73,7 @@ export default (state = {}, action) => {
       return {
         ...state,
         pager: action.pager,
+        tags: action.payload[2].tags,
         articles: action.payload[1].articles,
         articlesCount: action.payload[1].articlesCount,
         currentPage: 0,
