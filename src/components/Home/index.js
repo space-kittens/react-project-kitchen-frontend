@@ -1,26 +1,27 @@
 import Banner from './Banner/Banner';
 import MainView from './MainView/MainView';
 import React from 'react';
-import Tags from './Tags/Tags';
+import TagsCloud from './TagsCloud/TagsCloud';
+import Container from '../Container/Container';
 import agent from '../../agent';
 import { connect } from 'react-redux';
-import { HOME_PAGE_LOADED, HOME_PAGE_UNLOADED, APPLY_TAG_FILTER } from '../../constants/actionTypes';
+import styled from 'styled-components';
+import { HOME_PAGE_LOADED, HOME_PAGE_UNLOADED } from '../../constants/actionTypes';
 
 const Promise = global.Promise;
 
 const mapStateToProps = (state) => ({
   ...state.home,
   token: state.common.token,
-});
+} );
 
 const mapDispatchToProps = (dispatch) => ({
-  onClickTag: (tag, pager, payload) => dispatch({ type: APPLY_TAG_FILTER, tag, pager, payload }),
   onLoad: (tab, pager, payload) => dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload }),
   onUnload: () => dispatch({ type: HOME_PAGE_UNLOADED }),
 });
 
 class Home extends React.Component {
-  componentWillMount() {
+   UNSAFE_componentWillMount() {
     const tab = this.props.token ? 'feed' : 'all';
     const articlesPromise = this.props.token ? agent.Articles.feed : agent.Articles.all;
 
@@ -33,22 +34,39 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className='home-page'>
-        <Banner token={this.props.token} />
-        <div className='container page'>
-          <div className='row'>
-            <MainView />
-            <div className='col-md-3'>
-              <div className='sidebar'>
-                <p>Popular Tags</p>
-                <Tags tags={this.props.tags} onClickTag={this.props.onClickTag} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <>
+        <Banner token={ this.props.token } />
+        <PtContainer>
+          <FlexContainer>
+            <MainContent>
+              <MainView />
+            </MainContent>
+            <SideBar>
+              <TagsCloud/>
+            </SideBar>
+          </FlexContainer>
+        </PtContainer>
+      </>
     );
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+const PtContainer = styled(Container)`
+  padding-top: 32px;
+`;
+
+const FlexContainer = styled.div`
+  display: flex;
+`;
+
+const MainContent = styled.div`
+  width: 75%;
+  padding-right: 16px;
+`;
+
+const SideBar = styled.div`
+  width: 25%;
+  padding-left: 16px;
+`;

@@ -1,11 +1,16 @@
 import React from 'react';
+import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import { ARTICLE_FAVORITED, ARTICLE_UNFAVORITED } from '../../constants/actionTypes';
+import LikeToggler from '../LikeToggler/LikeToggler';
+import Tags from '../Tags/Tags';
 
-const FAVORITED_CLASS = 'btn btn-sm btn-primary';
-const NOT_FAVORITED_CLASS = 'btn btn-sm btn-outline-primary';
+import { colorBase, colorText } from '../../scss/styles'
+import { textStyles } from '../../scss/mixins'
+
+import userAvatar from '../../images/icons/avatar.svg';
 
 const mapDispatchToProps = (dispatch) => ({
   favorite: (slug) =>
@@ -20,56 +25,122 @@ const mapDispatchToProps = (dispatch) => ({
     }),
 });
 
-const ArticlePreview = (props) => {
-  const article = props.article;
-  const favoriteButtonClass = article.favorited ? FAVORITED_CLASS : NOT_FAVORITED_CLASS;
+const ArticlePreview = ({article, unfavorite, favorite}) => {
+  const {
+    favorited,
+    slug,
+    createdAt,
+    favoritesCount,
+    title,
+    description,
+    tagList,
+    author: {username}
+  } = article;
 
   const handleClick = (ev) => {
     ev.preventDefault();
-    if (article.favorited) {
-      props.unfavorite(article.slug);
+    if (favorited) {
+      unfavorite(slug);
     } else {
-      props.favorite(article.slug);
+      favorite(slug);
     }
   };
 
   return (
-    <div className='article-preview'>
-      <div className='article-meta'>
-        <Link to={`/@${article.author.username}`}>
-          <img src={article.author.image} alt={article.author.username} />
-        </Link>
-
-        <div className='info'>
-          <Link className='author' to={`/@${article.author.username}`}>
-            {article.author.username}
+    <Article>
+      <Header>
+        <CenteredItemsFlexHelper>
+          <Link to={`/@${username}`}>
+            <img width='32' height='32' src={userAvatar} alt={username} />
           </Link>
-          <span className='date'>{new Date(article.createdAt).toDateString()}</span>
-        </div>
 
-        <div className='pull-xs-right'>
-          <button className={favoriteButtonClass} onClick={handleClick}>
-            <i className='ion-heart'></i> {article.favoritesCount}
-          </button>
-        </div>
-      </div>
+          <ColumnFlexWrapper>
+            <Link to={`/@${username}`}>
+              {username}
+            </Link>
+            <PublishTime dateTime={ new Date( createdAt ).toISOString() }>
+              { new Date( createdAt ).toLocaleDateString('ru') }
+            </PublishTime>
+          </ColumnFlexWrapper>
+        </CenteredItemsFlexHelper>
 
-      <Link to={`/article/${article.slug}`} className='preview-link'>
-        <h1>{article.title}</h1>
-        <p>{article.description}</p>
-        <span>Read more...</span>
-        <ul className='tag-list'>
-          {article.tagList.map((tag) => {
-            return (
-              <li className='tag-default tag-pill tag-outline' key={tag}>
-                {tag}
-              </li>
-            );
-          })}
-        </ul>
+        <LikeToggler isActive={favorited} onClick={handleClick}>
+          {favoritesCount}
+        </LikeToggler>
+      </Header>
+
+      <Link to={`/article/${slug}`}>
+        <H2>{title}</H2>
+        <Description>{description}</Description>
       </Link>
-    </div>
+      <FlexHelper>
+        <Link to={`/article/${slug}`}>
+          <ReadMore>Продолжить чтение...</ReadMore>
+        </Link>
+        <TagsWrapper>
+          <Tags articleTags={ tagList } />
+        </TagsWrapper>
+      </FlexHelper>
+    </Article>
   );
 };
 
 export default connect(() => ({}), mapDispatchToProps)(ArticlePreview);
+
+const Article = styled.article`
+  padding: 32px 0;
+  box-shadow: inset 0 -1px 0 #2F2F37;
+`;
+
+const Header = styled.header`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+`;
+
+const H2 = styled.h2`
+  ${textStyles.headline}
+
+  margin-top: 0;
+  margin-bottom: 8px;
+`;
+
+const Description = styled.p`
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: ${colorText.secondary};
+`;
+
+const ReadMore = styled.p`
+  display: inline-block;
+  margin: 0;
+  color: ${colorBase.accent};
+`;
+
+const TagsWrapper = styled.div`
+  max-width: 76%;
+`;
+
+const ColumnFlexWrapper = styled.span`
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+`;
+
+const CenteredItemsFlexHelper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const FlexHelper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
+
+const PublishTime = styled.time`
+  ${textStyles.caption}
+
+  color: ${colorText.secondary};
+`;

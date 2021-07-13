@@ -25,12 +25,10 @@ const AppSubtitle = styled.p`
 const BannerWrapper = styled.div`
   padding: 32px 0;
   text-align: center;
+  box-shadow: inset 0 -1px 0 #2F2F37;
 `;
 
-const Banner = ({ token }) => {
-  if (token) {
-    return null;
-  }
+const Banner = () => {
   return (
     <BannerWrapper>
       <Container>
