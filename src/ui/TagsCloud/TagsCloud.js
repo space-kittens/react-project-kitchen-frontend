@@ -1,9 +1,9 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { colorBackground } from '../../../scss/styles'
+import { colorBackground } from '../../scss/styles';
 
-import Tags from '../../Tags/Tags';
+import Tags from '../../components/Tags/Tags';
 
 const TagsCloud = () => (
   <TagsCloudContainer>

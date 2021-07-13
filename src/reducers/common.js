@@ -1,6 +1,5 @@
 import {
   APP_LOAD,
-  REDIRECT,
   LOGOUT,
   ARTICLE_SUBMITTED,
   SETTINGS_SAVED,
@@ -11,7 +10,6 @@ import {
   EDITOR_PAGE_UNLOADED,
   HOME_PAGE_UNLOADED,
   PROFILE_PAGE_UNLOADED,
-  PROFILE_FAVORITES_PAGE_UNLOADED,
   SETTINGS_PAGE_UNLOADED,
   LOGIN_PAGE_UNLOADED,
   REGISTER_PAGE_UNLOADED,
@@ -31,8 +29,6 @@ export default (state = defaultState, action) => {
         appLoaded: true,
         currentUser: action.payload ? action.payload.user : null,
       };
-    case REDIRECT:
-      return { ...state, redirectTo: null };
     case LOGOUT:
       return { ...state, redirectTo: '/', token: null, currentUser: null };
     case ARTICLE_SUBMITTED: {
@@ -59,7 +55,6 @@ export default (state = defaultState, action) => {
     case EDITOR_PAGE_UNLOADED:
     case HOME_PAGE_UNLOADED:
     case PROFILE_PAGE_UNLOADED:
-    case PROFILE_FAVORITES_PAGE_UNLOADED:
     case SETTINGS_PAGE_UNLOADED:
     case LOGIN_PAGE_UNLOADED:
     case REGISTER_PAGE_UNLOADED:

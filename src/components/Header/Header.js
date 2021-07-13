@@ -2,16 +2,21 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+import AllienAvatar from '../../ui/UserAvatar/UserAvatar';
+
 import { colorBackground, fontFamily, colorText, animation } from '../../scss/styles';
 import home from '../../images/icons/home.svg';
 import logout from '../../images/icons/logout.svg';
 import newPost from '../../images/icons/new-post.svg';
 import settings from '../../images/icons/settings.svg';
-import avatar from '../../images/icons/avatar.svg';
 
 const StyledHeader = styled.header`
-  background-color: ${colorBackground.secondary};
   padding: 10px 16px;
+  background-color: ${colorBackground.secondary};
+
+  & ${AllienAvatar} {
+    margin-right: 8px;
+  }
 `;
 
 const Nav = styled.nav`
@@ -131,7 +136,7 @@ const LoggedInView = ({ currentUser }) => {
 
         <li>
           <ListLink to={`/@${currentUser.username}`}>
-            <Icon src={avatar} alt='Аватарка' />
+            <AllienAvatar width='24' height='24' alt={ currentUser.username } />
             {currentUser.username}
           </ListLink>
         </li>

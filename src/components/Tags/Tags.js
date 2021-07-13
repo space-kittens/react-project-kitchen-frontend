@@ -63,6 +63,7 @@ const TagListItem = styled.li`
 const Tag = styled.a`
   ${textStyles.caption}
 
+  display: inline-block;
   padding: 4px 8px;
   background-color: ${({isActive}) => isActive ? colorBase.accent : colorBase.input};
   border-radius: 100px;

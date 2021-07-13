@@ -1,9 +1,22 @@
 import React from 'react';
 
-import Container from "../../Container/Container";
+import Container from '../Container/Container';
 
 import styled from 'styled-components';
-import { fontFamily, colorText } from "../../../scss/styles";
+import { fontFamily, colorText } from "../../scss/styles";
+
+const Banner = () => {
+  return (
+    <BannerWrapper>
+      <Container>
+        <AppTitle>Проектная кухня</AppTitle>
+        <AppSubtitle>Место, где готовится новый опыт</AppSubtitle>
+      </Container>
+    </BannerWrapper>
+  );
+};
+
+export default Banner;
 
 const AppTitle = styled.h1`
   margin: 0 0 8px 0;
@@ -27,16 +40,3 @@ const BannerWrapper = styled.div`
   text-align: center;
   box-shadow: inset 0 -1px 0 #2F2F37;
 `;
-
-const Banner = () => {
-  return (
-    <BannerWrapper>
-      <Container>
-        <AppTitle>Проектная кухня</AppTitle>
-        <AppSubtitle>Место, где готовится новый опыт</AppSubtitle>
-      </Container>
-    </BannerWrapper>
-  );
-};
-
-export default Banner;

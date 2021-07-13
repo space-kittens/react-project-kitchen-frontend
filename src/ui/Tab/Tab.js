@@ -9,6 +9,7 @@ const Tab = styled.button`
   display: inline-block;
   padding: 16px 24px;
   color: ${({isActive}) => isActive ? colorText.primary : colorText.secondary};
+  line-height: inherit;
   box-shadow: inset 0 -2px 0 ${( { isActive } ) => isActive ? colorBase.accent : 'transparent'};
 
   &:hover,

@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import { ARTICLE_FAVORITED, ARTICLE_UNFAVORITED } from '../../constants/actionTypes';
+import AllienAvatar from '../../ui/UserAvatar/UserAvatar';
 import LikeToggler from '../LikeToggler/LikeToggler';
 import Tags from '../Tags/Tags';
 
 import { colorBase, colorText } from '../../scss/styles'
 import { textStyles } from '../../scss/mixins'
-
-import userAvatar from '../../images/icons/avatar.svg';
 
 const mapDispatchToProps = (dispatch) => ({
   favorite: (slug) =>
@@ -51,7 +50,7 @@ const ArticlePreview = ({article, unfavorite, favorite}) => {
       <Header>
         <CenteredItemsFlexHelper>
           <Link to={`/@${username}`}>
-            <img width='32' height='32' src={userAvatar} alt={username} />
+            <AllienAvatar width='32' height='32' alt={username} />
           </Link>
 
           <ColumnFlexWrapper>
